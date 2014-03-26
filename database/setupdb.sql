@@ -2,6 +2,17 @@
 DROP TABLE IF EXISTS `geoobjects`;
 DROP TABLE IF EXISTS `countries`;
 DROP TABLE IF EXISTS `types`;
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(32) NOT NULL,
+  `age` int(11) DEFAULT NULL,
+  `mail` varchar(64) NOT NULL,
+  `password` binary(20) NOT NULL,
+  `salt` char(5) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `countries` (
 	`id` int NOT NULL AUTO_INCREMENT,
@@ -16,7 +27,8 @@ CREATE TABLE `geoobjects` (
 	`address` varchar(200) NULL,
 	`city` varchar(80) NULL,
 	`countryId` int NULL,
-	`fid` int NULL,
+	`fid` varchar(200) NULL,
+	`description` text NULL,
 	PRIMARY KEY (`id`),
 	KEY (`typeId`),
 	KEY (`countryId`)
@@ -27,6 +39,7 @@ CREATE TABLE `types` (
 	`name` varchar(80) NOT NULL,
 	`originUrl` varchar(255) NULL,
 	`icon` varbinary(20000) NULL,
+	`description` text NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

@@ -2,16 +2,16 @@
 
 class Connection
 {
-	private $connection;
+	private static $connection;
 
 	public static function getConnection()
 	{
-		return $connection;
+		return Connection::$connection;
 	}
 	
 	public static function setConnection($con)
 	{
-		$connection = $con;
+		Connection::$connection = $con;
 	}
 }
 

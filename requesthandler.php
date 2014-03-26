@@ -24,12 +24,15 @@ class RequestHandler
 		{
 			switch ($action)
 			{
-			/*case 'login':
+			case 'login':
 				$pageHandler = new PageHandlers\LoginPageHandler();
 				break;
 			case 'logout':
 				$pageHandler = new PageHandlers\LogoutPageHandler();
-				break;*/
+				break;
+			case 'csvimport':
+				$pageHandler = new PageHandlers\CsvImportPageHandler();
+				break;
 			default:
 				header('HTTP/1.1 404 Not Found');
 				echo '<h1>404 Unkown Action</h1>';

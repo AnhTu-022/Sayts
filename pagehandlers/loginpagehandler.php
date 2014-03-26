@@ -8,40 +8,27 @@ class LoginPageHandler extends PageHandler
   {
   	if (isset($_SESSION['username']) && $_SESSION['username'] != '')
   	{
-  		$handler = new OverviewPageHandler();
+  		$handler = new CsvImportPageHandler();
   		$handler->handle();
   		return $handler;
   	}
   	
-  	$to = '';
-  	if (isset($_GET['to']))
-  	{
-  		$to = $_SERVER['REQUST_URI'].explode('to=');
-  		$to = $to[count($to)-1];
-  	}
-  	
     if (isset($_POST['username']) && isset($_POST['password']))
     {
-      $user = \Classes\User::first(array('username'=>$_POST['username']));
-      if ($user != null)
+    	$con = \Connection::getConnection();
+    	$stmt = $con->prepare('SELECT user_id, username, password, salt FROM users WHERE username=:username LIMIT 1');
+    	if ($stmt->execute(array(':username'=>$_POST['username'])))
       {
-        if ($user->comparePassword($_POST['password']))
+      	$user = $stmt->fetchObject();
+        if ($this->comparePassword($user, $_POST['password']))
         {
-          $_SESSION['username'] = $user->getUsername();
-          $_SESSION['userid'] = $user->getUserId();
+          $_SESSION['username'] = $user->username;
+          $_SESSION['userid'] = $user->user_id;
           
-/*          // redirect internally
-          $overviewPageHandler = new OverviewPageHandler();
-          $overviewPageHandler->handle();
-          return $overviewPageHandler;*/
-          
-          if ($to == '')
-          	$to = '?action=overview';
-          
-          // redirect with HTTP Headers
-          $this->setReturnCode(302);
-          $this->setHeader('Location', $to);
-          $this->setMessage('redirecting...');
+          // redirect internally
+          $pageHandler = new CsvImportPageHandler();
+          $pageHandler->handle();
+          return $pageHandler;
         }
       }
       
@@ -50,7 +37,6 @@ class LoginPageHandler extends PageHandler
     }
     
     $this->setPhpTemplate('login');
-    $this->setPageData('to', '&to='.$to);
     return $this;
   }
   
@@ -62,6 +48,13 @@ class LoginPageHandler extends PageHandler
   
 	public function loginRequired()
   {
+    return false;
+  }
+  
+  private function comparePassword($user, $password)
+  {
+    if (sha1($password.$user->salt) == $user->password)
+      return true;
     return false;
   }
 }
