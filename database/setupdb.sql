@@ -20,6 +20,7 @@ CREATE TABLE `countries` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- InnoDB doesn't support spatial indices -> use MyISAM
 CREATE TABLE `geoobjects` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`point` POINT NOT NULL,
@@ -32,7 +33,7 @@ CREATE TABLE `geoobjects` (
 	PRIMARY KEY (`id`),
 	KEY (`typeId`),
 	KEY (`countryId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE `types` (
 	`id` int NOT NULL AUTO_INCREMENT,
@@ -45,7 +46,8 @@ CREATE TABLE `types` (
 
 ALTER TABLE `geoobjects`
 	ADD CONSTRAINT `fk_type` FOREIGN KEY (`typeId`) REFERENCES `types` (`id`),
-	ADD CONSTRAINT `fk_country` FOREIGN KEY (`countryId`) REFERENCES `countries` (`id`);
+	ADD CONSTRAINT `fk_country` FOREIGN KEY (`countryId`) REFERENCES `countries` (`id`),
+	ADD SPATIAL `point` (`point`);
 
 
 -- countries

@@ -65,6 +65,8 @@ function deviceMotionHandler(eventData) {
 <div>
 <video autoplay height="250px"></video>
 
+<select id="geoobjectsTest" size="10"></select>
+
 <script>
   var errorCallback = function(e) {
     console.log('Reeeejected!', e);
@@ -86,6 +88,55 @@ function deviceMotionHandler(eventData) {
       // Ready to go. Do some stuff.
     };
   }, errorCallback);
+  
+
+document.body.onload = function()
+{
+	//TODO: get data from geoposition api
+	
+	var lat = 16.37;
+	var long = 48.24;
+	
+	ajaxRequest('index.php?action=geoobjects&lat='+lat+'&long='+long);
+}
+
+function resultFunction(result)
+{
+	var geoobjectsTest = document.getElementById('geoobjectsTest');
+
+	for(var i=0; i<result.data.length; i++)
+	{
+		var geoobject = result.data[i];
+		geoobjectsTest.innerHTML = geoobjectsTest.innerHTML + '<option value="'+geoobject.id+'">'+geoobject.fid+'</option>';
+	}
+}
+
+function ajaxRequest(url)
+{
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", url, true);
+    xmlhttp.onreadystatechange = readyStateChangeProxy(xmlhttp, resultFunction);
+    //xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+    xmlhttp.send();
+}
+
+function readyStateChangeProxy(ajaxObject, resultFunction)
+{
+    return function()
+    {
+        if (ajaxObject.readyState == 4 && ajaxObject.status == 200)
+        {
+            var result;
+            if (ajaxObject.responseText.length > 0)
+                result = eval("(" + ajaxObject.responseText + ")");
+            resultFunction(result);
+        }
+        else if (ajaxObject.readyState == 4 && ajaxObject.status != 200)
+        {
+            alert("HTTP error " + ajaxObject.status + ": " + ajaxObject.responseText);
+        }
+    }
+}
 </script>
 </div>
 

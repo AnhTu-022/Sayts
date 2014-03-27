@@ -27,6 +27,7 @@ abstract class PageHandler {
             $value = $this->_pageData[$key];
             if (is_string($value)) // prevent XSS
                 $value = htmlspecialchars($value);
+            //TODO: htmlspecialchars for arrays
 
             $pageData[$key] = $value;
         }
@@ -65,7 +66,7 @@ abstract class PageHandler {
     }
 
     protected function setAjaxTemplate($template) {
-        \Torm\Log::enable(false); // to make sure nothing destroys any JSON output
+        $this->setHeader('Content-Type', 'application/json');
         $this->setTemplate($template . '.ajax');
     }
 

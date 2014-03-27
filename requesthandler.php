@@ -33,6 +33,9 @@ class RequestHandler
 			case 'csvimport':
 				$pageHandler = new PageHandlers\CsvImportPageHandler();
 				break;
+			case 'geoobjects':
+				$pageHandler = new PageHandlers\GeoObjectsPageHandler();
+				break;
 			default:
 				header('HTTP/1.1 404 Not Found');
 				echo '<h1>404 Unkown Action</h1>';
