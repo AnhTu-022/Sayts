@@ -50,5 +50,3 @@ class LoginPageHandler extends PageHandler {
     }
 
 }
-
-?>

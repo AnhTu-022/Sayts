@@ -1,4 +1,5 @@
 <?php
+
 date_default_timezone_set('Europe/Vienna'); // Sladi gets a PHP exeption without this.
 
 require 'configuration.php';
@@ -9,6 +10,3 @@ spl_autoload_register();
 session_start();
 
 RequestHandler::handle();
-
-
-?>

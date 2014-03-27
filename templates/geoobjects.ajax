@@ -1,27 +1,27 @@
 {
-	"data":
-	[
-		<?php
-			$first = true;
-			foreach ($PAGEDATA['geoobjects'] as $geoobject)
-			{
-				if ($first) $first = false;
-				else echo ',';
-		?>
-		{
-			"id": <?php echo $geoobject['id']; ?>,
-			"x": "<?php echo $geoobject['x']; ?>",
-			"y": "<?php echo $geoobject['y']; ?>",
-			"type": "<?php echo $geoobject['type']; ?>",
-			"address": "<?php echo $geoobject['address']; ?>",
-			"city": "<?php echo $geoobject['city']; ?>",
-			"country": "<?php echo $geoobject['country']; ?>",
-			"fid": "<?php echo $geoobject['fid']; ?>",
-			"description": "<?php echo $geoobject['description']; ?>",
-			"originUrl": "<?php echo $geoobject['originUrl']; ?>",
-			"icon": "<?php echo $geoobject['icon']; ?>",
-			"typeDescription": "<?php echo $geoobject['typeDescription']; ?>"
-		}
-		<?php } ?>
-	]
+    "data":
+    [
+        <?php
+                $first = true;
+                foreach ($PAGEDATA['geoobjects'] as $geoobject)
+                {
+                        if ($first) $first = false;
+                        else echo ',';
+        ?>
+        {
+            "id": <?php echo $geoobject['id']; ?>,
+            "x": "<?php echo $geoobject['x']; ?>",
+            "y": "<?php echo $geoobject['y']; ?>",
+            "type": "<?php echo $geoobject['type']; ?>",
+            "address": "<?php echo $geoobject['address']; ?>",
+            "city": "<?php echo $geoobject['city']; ?>",
+            "country": "<?php echo $geoobject['country']; ?>",
+            "fid": "<?php echo $geoobject['fid']; ?>",
+            "description": "<?php echo $geoobject['description']; ?>",
+            "originUrl": "<?php echo $geoobject['originUrl']; ?>",
+            "icon": "<?php echo $geoobject['icon']; ?>",
+            "typeDescription": "<?php echo $geoobject['typeDescription']; ?>"
+        }
+        <?php } ?>
+    ]
 }

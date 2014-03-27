@@ -20,5 +20,3 @@ class OverviewPageHandler extends PageHandler {
     }
 
 }
-
-?>

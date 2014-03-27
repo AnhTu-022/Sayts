@@ -14,5 +14,3 @@ class StartPageHandler extends PageHandler {
     }
 
 }
-
-?>

@@ -1,18 +1,15 @@
 <?php
 
-class Connection
-{
-	private static $connection;
+class Connection {
 
-	public static function getConnection()
-	{
-		return Connection::$connection;
-	}
-	
-	public static function setConnection($con)
-	{
-		Connection::$connection = $con;
-	}
+    private static $connection;
+
+    public static function getConnection() {
+        return Connection::$connection;
+    }
+
+    public static function setConnection($con) {
+        Connection::$connection = $con;
+    }
+
 }
-
-?>
