@@ -31,6 +31,9 @@ class RequestHandler {
                 case 'geoobjects':
                     $pageHandler = new PageHandlers\GeoObjectsPageHandler();
                     break;
+                case 'icon':
+                		$pageHandler = new PageHandlers\IconPageHandler();
+                		break;
                 default:
                     header('HTTP/1.1 404 Not Found');
                     echo '<h1>404 Unkown Action</h1>';

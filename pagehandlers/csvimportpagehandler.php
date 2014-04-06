@@ -23,7 +23,7 @@ class CsvImportPageHandler extends PageHandler {
             $file = fopen($_FILES['icon']['tmp_name'], 'r');
             if ($file !== false) {
                 $icon = fread($file, filesize($_FILES['icon']['tmp_name']));
-                flcose($file);
+                fclose($file);
             }
         }
 

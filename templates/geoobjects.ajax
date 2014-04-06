@@ -17,10 +17,11 @@
             "city": "<?php echo $geoobject['city']; ?>",
             "country": "<?php echo $geoobject['country']; ?>",
             "fid": "<?php echo $geoobject['fid']; ?>",
+            "typeId": "<?php echo $geoobject['typeId']; ?>",
             "description": "<?php echo $geoobject['description']; ?>",
             "originUrl": "<?php echo $geoobject['originUrl']; ?>",
-            "icon": "<?php echo $geoobject['icon']; ?>",
-            "typeDescription": "<?php echo $geoobject['typeDescription']; ?>"
+            "typeDescription": "<?php echo $geoobject['typeDescription']; ?>",
+            "angle": "<?php echo $geoobject['angle']; ?>"
         }
         <?php } ?>
     ]

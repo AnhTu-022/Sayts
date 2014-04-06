@@ -6,9 +6,9 @@
 
     <body class='site text_style flex_vert'>
 
-        <div class='logo middle flex_centered'>
+        <!--<div class='logo middle flex_centered'>
             <span class="logofont">Sayts</span>
-        </div>
+        </div>-->
 
         <!-- Start of content div -->
-        <div class='content middle flex_grow'>
+        <div class='content middle flex_grow' id='content'>
