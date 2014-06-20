@@ -64,10 +64,10 @@ html {
 
 /* main body */
 .site {
-  /*margin: 0 auto 0 auto;
-  width: 980px;*/
-  background: url('foto/home1.jpg') no-repeat center center fixed;
-  background-size: cover;
+  /*margin: 0 auto 0 auto;*/
+  /*width: 980px;*/
+  /*background: url('foto/home1.jpg') no-repeat center center fixed;*/
+  /*background-size: cover;*/
   min-height: 100%;
 }
 
