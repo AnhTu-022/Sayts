@@ -1,4 +1,4 @@
-(function() {
+(function($) {
 
     var mockJson = [
         {"id": "A", "x": "0", "y": "0"},
@@ -31,4 +31,4 @@
     }
     ;
 
-}());
+}(jQuery));
